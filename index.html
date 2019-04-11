@@ -18,10 +18,19 @@
     and Electron
     <script>document.write(process.versions.electron)</script>.
   </p>
+  <input id="input" type="text" placeholder="https://www.bing.com"></input>
+  <button onclick="go()">Go</button>
   <button onclick="focusWebview()" onkeydown="onKeyDown(event)">Focus Webview</button>
   <webview id="webview" src="https://www.bing.com"></webview>
 
   <script>
+    function go() {
+      var input = document.getElementById("input");
+      var webview = document.getElementById("webview");
+      webview.src = input.value;
+      window.alert("Navigating to " + input.textContent);
+    }
+
     function focusWebview() {
       var webview = document.getElementById("webview");
       webview.focus();
